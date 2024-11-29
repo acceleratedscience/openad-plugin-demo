@@ -1,0 +1,7 @@
+Follow-up command for the <cmd>validate molecule(s)</cmd> commands.
+
+This will visualize the molecules in an iframe (Jupyter) or your browser (CLI).
+
+Example:
+<cmd>demo validate mols [Acetylcholine,Dopamine,Glutamate,Serotonin,Norepinephrine,GABA,Oxytocin,Estrogen,Testosterone,ARGIPRESSIN,Enkephalin,Dynorphin]</cmd>
+<cmd>demo mols visualize</cmd>

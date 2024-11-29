@@ -1,0 +1,8 @@
+A hello world example, but you can say hello to any subject.
+<soft>You can even greet multiple subjects at once.</soft>
+
+Examples:
+- <cmd>demo hello world</cmd>
+- <cmd>demo hello mars</cmd>
+- <cmd>demo hello universe</cmd>
+- <cmd>demo hello David,Sophia</cmd>

@@ -1,0 +1,46 @@
+# Fill in the fields below, then delete this line and the next.
+# https://packaging.python.org/en/latest/guides/writing-pyproject-toml
+
+[tool.poetry]
+name = "openad_plugin_demo"
+version = "0.0.1"
+description = "Demo plugin for plugin developers"
+keywords= ["demo", "plugin", "openad"]
+authors = [
+  "John Doe <john@example.com>",
+  "Joao Doao <joao@example.com>",
+]
+maintainers = [
+  "Yannis Domos <yannis@example.com>",
+]
+homepage = "https://www.myproject.com/"
+documentation = "https://www.myproject.com/docs"
+repository = "https://github.com/mycompany/myproject"
+readme = "README.md"
+license = "MIT"
+classifiers = [
+    "Operating System :: OS Independent",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Typing :: Typed",
+    "Programming Language :: Python :: 3.11"
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+openad_grammar_def = { git = "ssh://git@github.com/acceleratedscience/openad-grammar-def", branch = "main" }
+
+
+
+########## Do not below this line ##########
+
+
+
+
+[tool.black]
+line-length=120
+
+[build-system]
+requires = ["poetry_core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
