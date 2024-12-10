@@ -2,29 +2,29 @@ import os
 import pandas as pd
 import pyparsing as py
 
-# Plugin architecture
-from openad_grammar_def import molecule_identifier, molecule_identifier_list, quoted
+# OpenAD
 from openad.core.help import help_dict_create_v2
-from openad_grammar_def import molecule, molecules, molecule_identifier, molecule_identifier_list
-from openad_plugin_demo.plugin_grammar import validate
-from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, CMD_NOTE, PLUGIN_NAMESPACE
-
-
-# OpenAD tools
-from openad.smols.smol_functions import valid_identifier, possible_smiles
-from openad.helpers.output import output_error, output_warning, output_text, output_success, output_table
+from openad.smols.smol_functions import valid_identifier
+from openad.helpers.output import output_table
 from openad.helpers.general import style_bool
 from openad.helpers.spinner import spinner
+
+# Plugin
+from openad_grammar_def import molecule, molecules, molecule_identifier, molecule_identifier_list
+from openad_plugin_demo.plugin_grammar_def import validate
+from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, CMD_NOTE, PLUGIN_NAMESPACE
 
 
 class PluginCommand:
     """Validate molecules demo command"""
 
+    category: str  # Category of command
     index: int  # Order in help
     name: str  # Name of command = command dir name
     parser_id: str  # Internal unique identifier
 
     def __init__(self):
+        self.category = "Molecules"
         self.index = 1
         self.name = os.path.dirname(os.path.abspath(__file__))
         self.parser_id = f"plugin_{PLUGIN_KEY}_{self.name}"
@@ -46,17 +46,14 @@ class PluginCommand:
         # Sometimes it's more clear to create separate help entries for command variations:
         grammar_help.append(
             help_dict_create_v2(
-                category=PLUGIN_NAME,
-                command=f"{PLUGIN_NAMESPACE} validate molecule|mol <molecule_identifier>",
+                plugin_name=PLUGIN_NAME,
+                plugin_namespace=PLUGIN_NAMESPACE,
+                category=self.category,
+                command=[
+                    f"{PLUGIN_NAMESPACE} validate molecule|mol <molecule_identifier>",
+                    f"{PLUGIN_NAMESPACE} validate molecules|mols [<molecule_identifier>,<molecule_identifier>,...]",
+                ],
                 description_file=os.path.join(os.path.dirname(os.path.abspath(__file__)), "description_single.txt"),
-                note=CMD_NOTE,
-            )
-        )
-        grammar_help.append(
-            help_dict_create_v2(
-                category=PLUGIN_NAME,
-                command=f"{PLUGIN_NAMESPACE} validate molecules|mols [<molecule_identifier>,<molecule_identifier>,...]",
-                description_file=os.path.join(os.path.dirname(os.path.abspath(__file__)), "description_list.txt"),
                 note=CMD_NOTE,
             )
         )

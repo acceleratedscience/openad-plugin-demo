@@ -2,27 +2,31 @@ import os
 import pandas as pd
 import pyparsing as py
 
-# Plugin architecture
+# OpenAD
+from openad.app.global_var_lib import MEMORY
 from openad.core.help import help_dict_create_v2
-from openad_grammar_def import molecules, molecule_identifier_list, molecule_identifier
-from openad_plugin_demo.plugin_grammar import visualize
-from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, CMD_NOTE, PLUGIN_NAMESPACE
-
-# OpenAD tools
+from openad.smols.smol_functions import find_smol, clear_mws, mws_add, mws_is_empty
+from openad.gui.gui_launcher import gui_init
 from openad.helpers.output import output_error, output_text
 from openad.helpers.general import confirm_prompt
 from openad.helpers.spinner import spinner
-from openad.app.global_var_lib import MEMORY
-from openad.smols.smol_functions import find_smol, clear_mws, mws_add, mws_is_empty
-from openad.gui.gui_launcher import gui_init
+
+# Plugin
+from openad_grammar_def import molecules, molecule_identifier_list, molecule_identifier
+from openad_plugin_demo.plugin_grammar_def import visualize
+from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, CMD_NOTE, PLUGIN_NAMESPACE
 
 
 class PluginCommand:
-    index: int
-    name: str
-    parser_id: str
+    """Visualize molecules demo command"""
+
+    category: str  # Category of command
+    index: int  # Order in help
+    name: str  # Name of command = command dir name
+    parser_id: str  # Internal unique identifier
 
     def __init__(self):
+        self.category = "Molecules"
         self.index = 2
         self.name = os.path.dirname(os.path.abspath(__file__))
         self.parser_id = f"plugin_{PLUGIN_KEY}_{self.name}"
@@ -41,31 +45,19 @@ class PluginCommand:
         )
 
         # Command help
-        # - - -
-        # Add 3 separate help entries for the 3 command variations:
-        # 1. Follow up command to `validate mols`
         grammar_help.append(
             help_dict_create_v2(
-                category=PLUGIN_NAME,
-                command=f"  -> {PLUGIN_NAMESPACE} visualize molecules|mols",
-                description_file=os.path.join(os.path.dirname(os.path.abspath(__file__)), "description.txt"),
-                note=CMD_NOTE,
-            )
-        )
-        # 2. Visualize a list of molecules
-        grammar_help.append(
-            help_dict_create_v2(
-                category=PLUGIN_NAME,
-                command=f"{PLUGIN_NAMESPACE} visualize molecules|mols [<molecule_identifier>,<molecule_identifier>,...]",
-                description_file=os.path.join(os.path.dirname(os.path.abspath(__file__)), "description.txt"),
-                note=CMD_NOTE,
-            )
-        )
-        # 2. Visualize an individual molecule
-        grammar_help.append(
-            help_dict_create_v2(
-                category=PLUGIN_NAME,
-                command=f"{PLUGIN_NAMESPACE} visualize molecule|mol <molecule_identifier>",
+                plugin_name=PLUGIN_NAME,
+                plugin_namespace=PLUGIN_NAMESPACE,
+                category=self.category,
+                command=[
+                    # 1. Follow up command to `validate mols`
+                    f"  -> {PLUGIN_NAMESPACE} visualize molecules|mols",
+                    # 2. Visualize a list of molecules
+                    f"{PLUGIN_NAMESPACE} visualize molecules|mols [<molecule_identifier>,<molecule_identifier>,...]",
+                    # 2. Visualize an individual molecule
+                    f"{PLUGIN_NAMESPACE} visualize molecule|mol <molecule_identifier>",
+                ],
                 description_file=os.path.join(os.path.dirname(os.path.abspath(__file__)), "description.txt"),
                 note=CMD_NOTE,
             )

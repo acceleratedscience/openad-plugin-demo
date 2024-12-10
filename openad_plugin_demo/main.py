@@ -1,6 +1,9 @@
 import os
 import importlib.util
 
+# OpenAD
+from openad.helpers.plugins import reorder_commands_by_category_index
+
 
 class OpenADPlugin:
     PLUGIN_OBJECTS = {}
@@ -11,6 +14,8 @@ class OpenADPlugin:
         self.statements = []
         self.help = []
         plugin_commands = []
+
+        # Load commands & help
         for command_name in os.listdir(os.path.dirname(os.path.abspath(__file__)) + "/commands"):
             plugin_dir = os.path.dirname(os.path.abspath(__file__)) + "/commands/" + command_name
             if not os.path.isdir(plugin_dir):
@@ -21,10 +26,10 @@ class OpenADPlugin:
             module = importlib.util.module_from_spec(spec)
             spec.loader.exec_module(module)
             plugin_class = module.PluginCommand()
+            plugin_commands.append(plugin_class)
 
-            # Order the commands by their index
-            help_index = plugin_class.index if hasattr(plugin_class, "index") else 1000
-            plugin_commands.insert(help_index, plugin_class)
+        # Reorder the commands by their index, per category
+        plugin_commands = reorder_commands_by_category_index(plugin_commands)
 
         # Initialize the plugin objects in the correct order
         for plugin_class in plugin_commands:

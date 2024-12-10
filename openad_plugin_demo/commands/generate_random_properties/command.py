@@ -1,25 +1,28 @@
 import os
 import pandas as pd
 
-# Plugin system imports --> Update plugin dir name
-from openad_grammar_def import *
-from openad_plugin_demo.plugin_grammar import *
-from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, CMD_NOTE, PLUGIN_NAMESPACE
-
-# OpenAD imports
-from openad.helpers.output import output_error, output_warning, output_text, output_success, output_table
-from openad.smols.smol_functions import valid_identifier, possible_smiles
-from openad.plugins.style_parser import style
-from openad.helpers.general import style_bool
+# OpenAD
+from openad.smols.smol_functions import valid_identifier
 from openad.helpers.spinner import spinner
+from openad.helpers.general import style_bool
+from openad.helpers.output import output_error, output_warning, output_text, output_success, output_table
+
+# Plugin
+from openad_grammar_def import *
+from openad_plugin_demo.plugin_grammar_def import *
+from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, CMD_NOTE, PLUGIN_NAMESPACE
 
 
 class PluginCommand:
-    index: int
-    name: str
-    parser_id: str
+    """Generate random properties demo command"""
+
+    category: str  # Category of command
+    index: int  # Order in help
+    name: str  # Name of command = command dir name
+    parser_id: str  # Internal unique identifier
 
     def __init__(self):
+        self.category = "Molecules"
         self.index = 1
         self.name = os.path.dirname(os.path.abspath(__file__))
         self.parser_id = f"plugin_{PLUGIN_KEY}_{self.name}"
