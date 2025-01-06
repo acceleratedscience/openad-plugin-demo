@@ -9,7 +9,7 @@ from openad.helpers.output import output_error, output_warning, output_text, out
 
 # Plugin
 from openad_plugin_demo.plugin_grammar_def import localize, a, b
-from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, CMD_NOTE, PLUGIN_NAMESPACE
+from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, PLUGIN_NAMESPACE
 from openad_plugin_demo.commands.localize_help.description import description
 
 
@@ -44,7 +44,6 @@ class PluginCommand:
                 description_file=os.path.join(  # <-- desciption file
                     os.path.dirname(os.path.abspath(__file__)), "description.txt"
                 ),
-                note=CMD_NOTE,
             )
         )
         grammar_help.append(
@@ -54,7 +53,6 @@ class PluginCommand:
                 category=self.category,
                 command=f"{PLUGIN_NAMESPACE} localize b",
                 description=description,  # <-- desciption string
-                note=CMD_NOTE,
             )
         )
 

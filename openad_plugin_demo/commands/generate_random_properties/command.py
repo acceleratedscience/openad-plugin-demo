@@ -10,7 +10,7 @@ from openad.helpers.output import output_error, output_warning, output_text, out
 # Plugin
 from openad_grammar_def import *
 from openad_plugin_demo.plugin_grammar_def import *
-from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, CMD_NOTE, PLUGIN_NAMESPACE
+from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, PLUGIN_NAMESPACE
 
 
 class PluginCommand:
@@ -47,7 +47,6 @@ class PluginCommand:
         #         category=PLUGIN_NAME,
         #         command=f"{NAMESPACE} validate molecule|mol <molecule_identifier>",
         #         description_file=f"{self.name}/description_single.txt",
-        #         note=CMD_NOTE,
         #     )
         # )
         # grammar_help.append(
@@ -55,7 +54,6 @@ class PluginCommand:
         #         category=PLUGIN_NAME,
         #         command=f"{NAMESPACE} validate molecules|mols [<molecule_identifier>,<molecule_identifier>,...]",
         #         description_file=f"{self.name}/description_list.txt",
-        #         note=CMD_NOTE,
         #     )
         # )
 

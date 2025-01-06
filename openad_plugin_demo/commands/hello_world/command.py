@@ -9,7 +9,7 @@ from openad.helpers.output import output_error, output_warning, output_text, out
 
 # Plugin
 from openad_plugin_demo.plugin_grammar_def import hello, subject, subject_list
-from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, CMD_NOTE, PLUGIN_NAMESPACE
+from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, PLUGIN_NAMESPACE
 from openad_plugin_demo.commands.hello_world.ascii_art import globe
 
 
@@ -45,7 +45,6 @@ class PluginCommand:
                 category=self.category,
                 command=f"{PLUGIN_NAMESPACE} hello world | <planet_name> | <subject> | <subject>,<subject>,...",
                 description_file=os.path.join(os.path.dirname(os.path.abspath(__file__)), "description.txt"),
-                note=CMD_NOTE,
             )
         )
 

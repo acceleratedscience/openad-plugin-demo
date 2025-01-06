@@ -12,7 +12,7 @@ from openad.helpers.spinner import spinner
 # Plugin
 from openad_grammar_def import molecule, molecules, molecule_identifier, molecule_identifier_list
 from openad_plugin_demo.plugin_grammar_def import validate
-from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, CMD_NOTE, PLUGIN_NAMESPACE
+from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, PLUGIN_NAMESPACE
 
 
 class PluginCommand:
@@ -54,7 +54,6 @@ class PluginCommand:
                     f"{PLUGIN_NAMESPACE} validate molecules|mols [<molecule_identifier>,<molecule_identifier>,...]",
                 ],
                 description_file=os.path.join(os.path.dirname(os.path.abspath(__file__)), "description_single.txt"),
-                note=CMD_NOTE,
             )
         )
 
