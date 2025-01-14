@@ -1,4 +1,4 @@
-from openad.helpers.locale import localize  # pylint: disable=import-error
+from openad_tools.locale import localize
 from openad_plugin_demo.plugin_params import CLAUSES
 
 # Default description - English

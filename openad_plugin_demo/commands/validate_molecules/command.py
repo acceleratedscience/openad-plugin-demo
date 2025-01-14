@@ -5,12 +5,14 @@ import pyparsing as py
 # OpenAD
 from openad.core.help import help_dict_create_v2
 from openad.smols.smol_functions import valid_identifier
-from openad.helpers.output import output_table
-from openad.helpers.general import style_bool
-from openad.helpers.spinner import spinner
+
+# OpenAD tools
+from openad_tools.spinner import spinner
+from openad_tools.output import output_table
+from openad_tools.helpers import style_bool
+from openad_tools.grammar_def import molecule, molecules, molecule_identifier, molecule_identifier_list
 
 # Plugin
-from openad_grammar_def import molecule, molecules, molecule_identifier, molecule_identifier_list
 from openad_plugin_demo.plugin_grammar_def import validate
 from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, PLUGIN_NAMESPACE
 

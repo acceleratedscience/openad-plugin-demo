@@ -5,7 +5,9 @@ import pyparsing as py
 
 # OpenAD
 from openad.core.help import help_dict_create_v2
-from openad.helpers.output import output_error, output_warning, output_text, output_success, output_table
+
+# OpenAD tools
+from openad_tools.output import output_error, output_warning, output_text, output_success, output_table
 
 # Plugin
 from openad_plugin_demo.plugin_grammar_def import hello, subject, subject_list

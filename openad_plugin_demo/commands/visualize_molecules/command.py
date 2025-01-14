@@ -7,12 +7,14 @@ from openad.app.global_var_lib import MEMORY
 from openad.core.help import help_dict_create_v2
 from openad.smols.smol_functions import find_smol, clear_mws, mws_add, mws_is_empty
 from openad.gui.gui_launcher import gui_init
-from openad.helpers.output import output_error, output_text
-from openad.helpers.general import confirm_prompt
-from openad.helpers.spinner import spinner
+
+# OpenAD tools
+from openad_tools.spinner import spinner
+from openad_tools.helpers import confirm_prompt
+from openad_tools.output import output_error, output_text
+from openad_tools.grammar_def import molecules, molecule_identifier_list, molecule_identifier
 
 # Plugin
-from openad_grammar_def import molecules, molecule_identifier_list, molecule_identifier
 from openad_plugin_demo.plugin_grammar_def import visualize
 from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, PLUGIN_NAMESPACE
 

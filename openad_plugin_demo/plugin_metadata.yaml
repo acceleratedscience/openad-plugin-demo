@@ -1,0 +1,16 @@
+# What is displayed above the plugin's help output, as well
+# as above the plugin's commands in the general OpenAD help.
+name: Demo
+
+# A short prefix (2-3 chars max) that will be added to every
+# command. Doubles as a shortcut to display the plugin's help.
+namespace: demo
+
+# A description of the plugin, displayed in the plugin's help.
+# If plugin_description.txt is present, this will be ignored.
+description: null
+
+author: IBM Research
+version: 0.0.1
+website: null
+github: github.com/acceleratedscience/open-ad-toolkit

@@ -3,12 +3,14 @@ import pandas as pd
 
 # OpenAD
 from openad.smols.smol_functions import valid_identifier
-from openad.helpers.spinner import spinner
-from openad.helpers.general import style_bool
-from openad.helpers.output import output_error, output_warning, output_text, output_success, output_table
+
+# OpenAD tools
+from openad_tools.grammar_def import *
+from openad_tools.spinner import spinner
+from openad_tools.helpers import style_bool
+from openad_tools.output import output_error, output_warning, output_text, output_success, output_table
 
 # Plugin
-from openad_grammar_def import *
 from openad_plugin_demo.plugin_grammar_def import *
 from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, PLUGIN_NAMESPACE
 
