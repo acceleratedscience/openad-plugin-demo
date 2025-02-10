@@ -34,7 +34,7 @@ class PluginCommand:
 
         # statements.append(
         #     Forward(
-        #         py.Word(NAMESPACE)
+        #         py.CaselessKeyword(NAMESPACE)
         #         + test
         #         + (
         #             (molecules + molecule_identifier_list("identifiers"))

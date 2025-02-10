@@ -8,6 +8,7 @@ from openad.core.help import help_dict_create_v2
 
 # OpenAD tools
 from openad_tools.output import output_error, output_warning, output_text, output_success, output_table
+from openad_tools.helpers import description_txt
 
 # Plugin
 from openad_plugin_demo.plugin_grammar_def import hello, subject, subject_list
@@ -46,7 +47,7 @@ class PluginCommand:
                 plugin_namespace=PLUGIN_NAMESPACE,
                 category=self.category,
                 command=f"{PLUGIN_NAMESPACE} hello world | <planet_name> | <subject> | <subject>,<subject>,...",
-                description_file=os.path.join(os.path.dirname(os.path.abspath(__file__)), "description.txt"),
+                description_file=description_txt(__file__),
             )
         )
 

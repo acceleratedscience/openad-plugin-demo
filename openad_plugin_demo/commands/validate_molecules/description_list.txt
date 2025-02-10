@@ -1,5 +1,0 @@
-A demo on how to use the molecule set viewer in your plugins.
-
-Examples:
-- <cmd>demo validate mols [Acetylcholine,Dopamine,Glutamate,Serotonin,Norepinephrine,GABA,Oxytocin,Estrogen,Testosterone,ARGIPRESSIN,Enkephalin,Dynorphin]</cmd>
-- <cmd>demo validate molecules [[HH],O=[Si]=O,C#C,N#N,c1ccccc1,O=C=O,C1CC1,CCO]</cmd>

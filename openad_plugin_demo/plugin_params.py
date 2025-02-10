@@ -20,5 +20,6 @@ CLAUSES = {
         "en": "[ This is a clause than can be repeated in the description of multiple commands. ]",
         "fr": "[ Ceci est la clause en français général. ]",
         "fr_BE": "[ Ceci est la clause en français belge. ]",
-    }
+    },
+    "supported_identifiers": "Supported identifiers are SMILES, InChI, InChIKey, or name.",
 }

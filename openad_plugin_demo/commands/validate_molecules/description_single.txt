@@ -1,5 +1,0 @@
-A demo on how to use the molecule viewer in your plugins.
-
-Examples:
-- <cmd>demo validate mol nanoputian</cmd>
-- <cmd>demo validate molecule CC1=CC(=O)C=C(C1(C)C)C</cmd>

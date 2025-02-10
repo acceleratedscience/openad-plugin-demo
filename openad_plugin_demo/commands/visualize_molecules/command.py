@@ -1,22 +1,20 @@
 import os
-import pandas as pd
 import pyparsing as py
 
 # OpenAD
-from openad.app.global_var_lib import MEMORY
 from openad.core.help import help_dict_create_v2
-from openad.smols.smol_functions import find_smol, clear_mws, mws_add, mws_is_empty
-from openad.gui.gui_launcher import gui_init
 
 # OpenAD tools
-from openad_tools.spinner import spinner
-from openad_tools.helpers import confirm_prompt
-from openad_tools.output import output_error, output_text
-from openad_tools.grammar_def import molecules, molecule_identifier_list, molecule_identifier
+from openad_tools.grammar_def import (
+    molecule_s,
+    molecule_identifier_s,
+)
 
 # Plugin
 from openad_plugin_demo.plugin_grammar_def import visualize
 from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, PLUGIN_NAMESPACE
+from openad_plugin_demo.commands.visualize_molecules.visualize_molecules import visualize_molecules
+from openad_plugin_demo.commands.visualize_molecules.description import description
 
 
 class PluginCommand:
@@ -39,10 +37,7 @@ class PluginCommand:
         # Command definition
         statements.append(
             py.Forward(
-                py.Word(PLUGIN_NAMESPACE)
-                + visualize
-                + molecules
-                + py.Optional(molecule_identifier_list("identifiers") | molecule_identifier("identifier"))
+                py.CaselessKeyword(PLUGIN_NAMESPACE) + visualize + molecule_s + py.Optional(molecule_identifier_s)
             )(self.parser_id)
         )
 
@@ -53,77 +48,18 @@ class PluginCommand:
                 plugin_namespace=PLUGIN_NAMESPACE,
                 category=self.category,
                 command=[
-                    # 1. Follow up command to `validate mols`
-                    f"  -> {PLUGIN_NAMESPACE} visualize molecules|mols",
-                    # 2. Visualize a list of molecules
-                    f"{PLUGIN_NAMESPACE} visualize molecules|mols [<molecule_identifier>,<molecule_identifier>,...]",
-                    # 2. Visualize an individual molecule
-                    f"{PLUGIN_NAMESPACE} visualize molecule|mol <molecule_identifier>",
+                    # Visualize an individual molecule
+                    f"{PLUGIN_NAMESPACE} visualize molecule <molecule_identifier>",
+                    # Visualize a list of molecules
+                    f"{PLUGIN_NAMESPACE} visualize molecules [<molecule_identifier>,<molecule_identifier>,...]",
                 ],
-                description_file=os.path.join(os.path.dirname(os.path.abspath(__file__)), "description.txt"),
+                description=description,
             )
         )
 
     def exec_command(self, cmd_pointer, parser):
         """Execute the command"""
 
-        # Preserve memory for further follow-up commands
-        MEMORY.preserve()
+        cmd = parser.as_dict()
 
-        # If the last command returned table data with output_table(),
-        # this data is stored in memory and can be retrieved with MEMORY.get()
-        molecules_df = MEMORY.get()
-
-        # Abort if no result was stored in memory
-        if not isinstance(molecules_df, pd.DataFrame):
-            return output_error("No molecules found in memory")
-
-        # Extract the "identifier" field for every row in the dataframe "molecules"
-        identifiers = molecules_df["Identifier"].tolist()
-
-        # Single identifier: open molecule viewer
-        if len(identifiers) == 1:
-            gui_init(cmd_pointer, "mol/" + identifiers[0])
-
-        # List of identifier: Open molset viewer
-        else:
-            # Clear your molecule working set
-            clear_mws(cmd_pointer, force=False)
-
-            # Give user the chance to abort before we add molecules to the working set
-            c_ontinue = (
-                True
-                if mws_is_empty(cmd_pointer)
-                else confirm_prompt("Molecules will be added to your current working set. Do you want to continue?")
-            )
-            if not c_ontinue:
-                return output_error("Action aborted")
-
-            # Add molecule to your molecule working set
-            for identifier in identifiers:
-                # Start loader
-                spinner.start(f"Looking up {identifier}")
-
-                # Create molecule dict.
-                # Set basic to True for basic RDKit molecule withour PubChem lookup
-                smol = find_smol(cmd_pointer, identifier, basic=False)
-
-                # Stop loader
-                spinner.stop()
-
-                mws_add(cmd_pointer, smol, force=True)
-
-            # Open your molecule working set
-            gui_init(cmd_pointer, "my-mols")
-
-            return output_text(
-                "\n".join(
-                    [
-                        "To save the result to your workspace, use the GUI or run follow-up commands:",
-                        "    <cmd>result save</cmd>",
-                        "    <cmd>result save as 'demo_molecules.molset.json'</cmd> <soft># Save as molset</soft>",
-                        "    <cmd>result save as 'demo_molecules.smi'</cmd> <soft># Save as list of smiles</soft>",
-                    ]
-                ),
-                pad_btm=1,
-            )
+        visualize_molecules(cmd_pointer, cmd)
