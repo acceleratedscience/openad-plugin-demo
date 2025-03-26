@@ -1,4 +1,4 @@
-Un exemple de hello world, mais vous pouvez dire bonjour à n'importe quel sujet.
+Un exemple de hello world légèrement plus élaboré où vous pouvez dire bonjour à n'importe quelle planète ou autre sujet.
 <soft>Vous pouvez même saluer plusieurs sujets à la fois.</soft>
 
 Exemples :

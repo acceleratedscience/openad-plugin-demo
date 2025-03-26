@@ -1,9 +1,9 @@
-from openad_plugin_demo.plugin_params import CLAUSES
+from openad_plugin_demo.plugin_params import SNIPPETS
 
 description = f"""
 A demo on how to capture and validate molecule input in a command.
 
-{CLAUSES['supported_identifiers']}
+{SNIPPETS['supported_identifiers']}
 
 
 Examples:

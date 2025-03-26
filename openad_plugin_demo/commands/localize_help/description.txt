@@ -1,8 +1,9 @@
-This command demonstrates the easiest way to localize your command desciption in different languages by providing multiple description files for the different languages and regions.
-
-You should not include the encoding, but you can optionally include the region, eg. British or American English, French or Belgian French.
+This command demonstrates the easiest way to localize your command desciption in different languages:
+Simply provide multiple description files for the different languages and regions, OpenAD takes care of the rest.
 
 <yellow>Note 1:</yellow> Always provide the default description in English.
+
+<yellow>Note 3:</yellow> We even support regions, eg. British or American English, or Canadian or Belgian French.
 
 <yellow>Note 2:</yellow> When providing localization for a specific region, make sure to always provide a fallback localization for the same language without region. For example:
 - <green>√</green> <cmd>fr_BE</cmd> + <cmd>fr</cmd> = Belgian French + any French --> <green>GOOD</green>

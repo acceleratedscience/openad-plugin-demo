@@ -61,7 +61,6 @@ class PluginCommand:
         """Execute the command"""
 
         cmd = parser.as_dict()
-        print(cmd)
 
         return output_warning(
             "Append this command with a question mark to see the localized help.\n<cmd>demo localize a ?</cmd>"

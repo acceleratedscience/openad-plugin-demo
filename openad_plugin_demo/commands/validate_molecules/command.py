@@ -5,6 +5,7 @@ import pyparsing as py
 # OpenAD
 from openad.core.help import help_dict_create_v2
 from openad.smols.smol_functions import valid_identifier
+from openad.app.global_var_lib import MEMORY
 
 # OpenAD tools
 from openad_tools.spinner import spinner
@@ -89,6 +90,11 @@ class PluginCommand:
         # Stop loader
         spinner.stop()
 
+        # Store identifiers in memory
+        # This allows a follow-up command to use the data: `demo visualize mols`
+        # See visualize_molecules.py for implementation
+        MEMORY.store(table)
+
         # Display results
-        output_table(table, pad_top=1, return_val=False)
+        output_table(table, pad_btm=1, return_val=False, is_data=False)
         output_text("<soft>To visualize the result, run: <cmd>demo visualize mols</cmd></soft>", pad_btm=1)

@@ -11,7 +11,7 @@ from openad_tools.grammar_def import (
 )
 
 # Plugin
-from openad_plugin_demo.plugin_grammar_def import visualize
+from openad_plugin_demo.plugin_grammar_def import visualize, clause_basic
 from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, PLUGIN_NAMESPACE
 from openad_plugin_demo.commands.visualize_molecules.visualize_molecules import visualize_molecules
 from openad_plugin_demo.commands.visualize_molecules.description import description
@@ -37,7 +37,11 @@ class PluginCommand:
         # Command definition
         statements.append(
             py.Forward(
-                py.CaselessKeyword(PLUGIN_NAMESPACE) + visualize + molecule_s + py.Optional(molecule_identifier_s)
+                py.CaselessKeyword(PLUGIN_NAMESPACE)
+                + visualize
+                + molecule_s
+                + py.Optional(molecule_identifier_s)
+                + clause_basic
             )(self.parser_id)
         )
 
@@ -49,9 +53,9 @@ class PluginCommand:
                 category=self.category,
                 command=[
                     # Visualize an individual molecule
-                    f"{PLUGIN_NAMESPACE} visualize molecule <molecule_identifier>",
+                    f"{PLUGIN_NAMESPACE} visualize molecule <molecule_identifier> [ basic ]",
                     # Visualize a list of molecules
-                    f"{PLUGIN_NAMESPACE} visualize molecules [<molecule_identifier>,<molecule_identifier>,...]",
+                    f"{PLUGIN_NAMESPACE} visualize molecules [<molecule_identifier>,<molecule_identifier>,...] [ basic ]",
                 ],
                 description=description,
             )

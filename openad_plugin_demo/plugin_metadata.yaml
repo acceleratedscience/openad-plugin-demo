@@ -1,5 +1,11 @@
-# What is displayed above the plugin's help output, as well
-# as above the plugin's commands in the general OpenAD help.
+# Plugin metadata
+# - - -
+# - The parameters in this file are used to generate the plugin's splash screen
+# - The splash screen is displayed when you run `<name>` or <namespace>`
+# - Some parameters like name and namespace are also exposed via plugin_params.py
+
+# The plugin name is displayed as a header on top of the plugin splash screen,
+# as well as a section header to group your plugin's commands in the general OpenAD help.
 name: Demo
 
 # A short prefix (2-3 chars max) that will be added to every
@@ -12,5 +18,5 @@ description: null
 
 author: IBM Research
 version: 0.0.1
+github: github.com/acceleratedscience/openad-plugin-demo
 website: null
-github: github.com/acceleratedscience/open-ad-toolkit

@@ -1,0 +1,9 @@
+A slighty more elaborate hello world example where you can say hello to any planet or other subject.
+<soft>You can even greet multiple subjects at once.</soft>
+
+Examples:
+- <cmd>demo hello mars</cmd>
+- <cmd>demo hello jupyter</cmd>
+- <cmd>demo hello universe</cmd>
+- <cmd>demo hello David</cmd>
+- <cmd>demo hello David, Sophia, Billy</cmd>
