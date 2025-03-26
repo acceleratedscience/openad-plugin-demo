@@ -68,6 +68,7 @@ openad
 
 ### Learning
 
-The plugin code is relatively simple and self explanatory. You'll find documentation across the code to help you along.
+The plugin code is relatively simple and self-explanatory.  
+You'll find documentation across the code to help you along.
 
 If you prefer a step-by-step guide on how to build your own plugin, head to the [Plugin Developer Guide](https://openad.accelerate.science/documentation/plugins/#creating-your-own-plugin).
