@@ -1,8 +1,12 @@
 # OpenAD Demo Plugin
 
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/openad)](https://pypi.org/project/openad/)
+[![License MIT](https://img.shields.io/github/license/acceleratedscience/open-ad-toolkit)](https://opensource.org/licenses/MIT)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 This is a demonstration plugin for OpenAD plugin developers.
 
-You can use it as a scaffold to develop your own plugins, and learn how to use a number of OpenAD tools in your plugins, like visualizing molecules and other data.
+You can use it as a scaffold to develop your own plugins, and to learn how to use a number of OpenAD tools in your own plugins, like visualizing molecules and other data.
 
 <br>
 
@@ -28,7 +32,7 @@ To see how the plugin commands are now integated in the general OpenAD help:
 
 ## Build Your Own
 
-First download the plugin:
+First clone the plugin repo:
 
 ```shell
 git clone --no-remote git@github.com:acceleratedscience/openad-plugin-demo.git
@@ -49,7 +53,7 @@ cd openad-plugin-demo
 pip install -e .
 ```
 
-Duplicate the [commands/hello_world] directory as a scaffold for every command you build into your plugin.
+Duplicate the [commands/hello_world](openad_plugin_demo/commands/hello_world) directory as a scaffold for every command you build into your plugin.
 
 Now relaunch openad every time you want to see an edit you made.
 
@@ -60,4 +64,10 @@ exit
 openad
 ```
 
-To see a step-by-step guide on how to build your own plugin, head to the [Plugin Developer Guide](https://openad.accelerate.science/documentation/plugins/#creating-your-own-plugin).
+<br>
+
+### Learning
+
+The plugin code is relatively simple and self explanatory. You'll find documentation across the code to help you along.
+
+If you prefer a step-by-step guide on how to build your own plugin, head to the [Plugin Developer Guide](https://openad.accelerate.science/documentation/plugins/#creating-your-own-plugin).
