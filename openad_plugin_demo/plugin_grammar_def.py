@@ -15,6 +15,10 @@ world = py.CaselessKeyword("world")
 subject = py.Word(py.alphanums + "_-~.:;?/|\\+<=>*@#$%&")
 subject_list = py.delimitedList(subject, delim=",")
 
+# Output styles
+output = py.CaselessKeyword("output")
+styles = py.CaselessKeyword("styles")
+
 # Localize
 localize = py.CaselessKeyword("localize") | py.CaselessKeyword("localise")
 a = py.CaselessKeyword("a")

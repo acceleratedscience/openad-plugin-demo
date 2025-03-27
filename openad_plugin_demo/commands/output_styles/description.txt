@@ -1,0 +1,1 @@
+A practical demo on how style your printed content with <cmd>output_text()</cmd>, <cmd>output_success()</cmd>, <cmd>output_error()</cmd> and <cmd>output_table()</cmd>.
