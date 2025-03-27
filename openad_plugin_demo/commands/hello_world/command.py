@@ -1,6 +1,4 @@
 import os
-import datetime
-import pandas as pd
 import pyparsing as py
 
 # OpenAD
@@ -13,7 +11,6 @@ from openad_tools.helpers import description_txt
 # Plugin
 from openad_plugin_demo.plugin_grammar_def import hello, world
 from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, PLUGIN_NAMESPACE
-from openad_plugin_demo.commands.hello_world.ascii_art import globe
 
 
 class PluginCommand:
@@ -49,5 +46,20 @@ class PluginCommand:
 
     def exec_command(self, cmd_pointer, parser):
         """Execute the command"""
+
+        globe = """
+          ________
+      ,o88~~88888888o,
+    ,~~?8P  88888     8,
+   d  d88 d88 d8_88     b
+  d  d888888888          b
+  8,?88888888  d8.b o.   8
+  8~88888888~ ~^8888\ db 8
+  ?  888888          ,888P
+   ?  `8888b,_      d888P
+    `   8888888b   ,888'
+      ~-?8888888 _.P-~
+           ~~~~~~
+"""
 
         return output_text(f"<yellow>Hello to you too.</yellow>\n- The world\n\n<cyan>{globe}</cyan>", pad=2, edge=True)

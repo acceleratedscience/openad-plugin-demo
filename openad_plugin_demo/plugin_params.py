@@ -23,6 +23,10 @@ PLUGIN_NAME = plugin_metadata.get("name")
 PLUGIN_KEY = PLUGIN_NAME.lower().replace(" ", "_")
 PLUGIN_NAMESPACE = plugin_metadata.get("namespace")
 
+
+# --- Edit below this line --- #
+
+
 # Snippets for use in command descriptions
 SNIPPETS = {
     "supported_identifiers": "Supported identifiers are SMILES, InChI, InChIKey, or name.",
