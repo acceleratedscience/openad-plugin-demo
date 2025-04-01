@@ -1,17 +1,21 @@
+# Fill in the fields below, then delete this line and the next.
+# https://packaging.python.org/en/latest/guides/writing-pyproject-toml
+
 [tool.poetry]
-name = "openad_plugin_fingerprint"
+name = "openad_plugin_demo"
 version = "0.0.1"
 description = "Demo plugin for plugin developers"
-keywords= ["fingerprint", "plugin", "openad"]
+keywords= ["demo", "plugin", "openad"]
 authors = [
-  "Moenen Erbuer <moenen.erbuer@ibm.com>",
+  "John Doe <john@example.com>",
+  "Joao Doao <joao@example.com>",
 ]
 maintainers = [
-  "Moenen Erbuer <moenen.erbuer@ibm.com>",
+  "Yannis Domos <yannis@example.com>",
 ]
-homepage = ""
-documentation = ""
-repository = ""
+homepage = "https://www.myproject.com/"
+documentation = "https://www.myproject.com/docs"
+repository = "https://github.com/mycompany/myproject"
 readme = "README.md"
 license = "MIT"
 classifiers = [
@@ -25,8 +29,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.12"
-openad_tools = { git = "ssh://git@github.com/acceleratedscience/openad-tools", tag = "v0.0.2" }
-
+openad_tools = { git = "ssh://git@github.com/acceleratedscience/openad-tools", tag = "v0.0.1" }
 
 
 

@@ -1,0 +1,8 @@
+Un exemple de hello world légèrement plus élaboré où vous pouvez dire bonjour à n'importe quelle planète ou autre sujet.
+<soft>Vous pouvez même saluer plusieurs sujets à la fois.</soft>
+
+Exemples :
+- <cmd>demo hello world</cmd>
+- <cmd>demo hello mars</cmd>
+- <cmd>demo hello universe</cmd>
+- <cmd>demo hello David,Sophia</cmd>
