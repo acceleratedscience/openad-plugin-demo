@@ -1,1 +1,0 @@
-A basic hello world example command.

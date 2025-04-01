@@ -1,1 +1,0 @@
-This demonstration plugin showcases some of the OpenAD functionality available to plugin developers.
