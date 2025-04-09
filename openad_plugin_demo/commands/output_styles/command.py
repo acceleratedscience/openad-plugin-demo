@@ -109,3 +109,33 @@ class PluginCommand:
             pad=1,
         )
         output_text("<soft>Also this:</soft>\n" + ascii_type("hello world"), return_val=False, pad=1)
+
+        # Now let's put it all together to create a nice splash screen
+        fat_header = ascii_type("hello")
+        h1 = "\n<h1>How to Make a Splash</h1>\n"
+        text = "This is a simple example of how to use the OpenAD output tools to create a nice splash screen."
+        commands = {
+            "foo": "This is a command that does foo",
+            "barbar": "This is a command that does bar bar",
+            "bazz": "This is a command that does baz",
+        }
+        cmd_width = max([len(k) for k in commands.keys()])
+        commands_str = "\n\n".join([f"<cmd>{k:<{cmd_width}}</cmd>   {v}" for k, v in commands.items()])
+        splash = "\n".join(
+            [
+                fat_header,
+                h1,
+                text,
+                "",
+                commands_str,
+            ]
+        )
+        output_text(
+            splash,
+            return_val=False,
+            pad=2,
+            edge=True,
+            width=50,
+        )
+
+        output_error("\n\n\n     This does not feel right\n\n\n", return_val=False)

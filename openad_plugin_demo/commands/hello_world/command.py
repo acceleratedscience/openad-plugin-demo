@@ -9,8 +9,8 @@ from openad_tools.output import output_error, output_warning, output_text, outpu
 from openad_tools.helpers import description_txt
 
 # Plugin
-from openad_plugin_demo.plugin_grammar_def import hello, world
-from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, PLUGIN_NAMESPACE
+from openad_plugin_demo.plugin_grammar_def import hello, world  # <-- UPDATE
+from openad_plugin_demo.plugin_params import PLUGIN_NAME, PLUGIN_KEY, PLUGIN_NAMESPACE  # <-- UPDATE
 
 
 class PluginCommand:
